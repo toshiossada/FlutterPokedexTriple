@@ -1,0 +1,46 @@
+name: triple_pokedex
+description: A new Flutter project.
+
+publish_to: "none"
+
+version: 1.0.0+1
+
+## Slidy Scripts
+vars:
+  clean: flutter clean
+  get: flutter pub get
+  runner: flutter pub run build_runner
+scripts:
+  mobx_build: $runner build
+  mobx_watch: $clean & $get & $runner watch
+  mobx_build_clean: $clean & $get & $runner build --delete-conflicting-outputs
+
+environment:
+  sdk: ">=2.12.0 <3.0.0"
+
+dependencies:
+  flutter_triple: ^1.0.4
+  mobx_triple: ^1.0.0
+  mobx: ^2.0.0-nullsafety.2
+  dio: ^3.0.10
+  flutter_mobx: ^2.0.0-nullsafety.1
+  flutter_modular: ^3.0.0+1  
+  flutter_svg: ^0.21.0-nullsafety.0
+  google_fonts: ^1.1.2
+  dartz: ^0.10.0-nullsafety.1
+  flutter:
+    sdk: flutter
+
+
+dev_dependencies:
+  mockito: ^5.0.0
+  # modular_codegen: ^3.0.0-nullsafety.1
+  # build_runner: ^1.10.1
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/types/
+    - assets/loading.gif  

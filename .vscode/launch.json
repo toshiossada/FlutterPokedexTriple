@@ -1,0 +1,25 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Flutter",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "debug",
+            "program": "lib/main.dart",
+            "args": [
+                "--no-sound-null-safety"
+            ]
+        },
+        {
+            "name": "Dart: Run all Tests",
+            "request": "launch",
+            "type": "dart",
+            "program": "./test/",
+            "args": [
+                "--no-sound-null-safety",
+                "-d chrome"
+            ]
+        }
+    ]
+}
