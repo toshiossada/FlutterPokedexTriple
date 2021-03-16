@@ -2,6 +2,18 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": ".NET Core Launch (console)",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            "program": "${workspaceFolder}/bin/Debug/<target-framework>/<project-name.dll>",
+            "args": [],
+            "cwd": "${workspaceFolder}",
+            "stopAtEntry": false,
+            "console": "internalConsole"
+        },
+
+        {
             "name": "Flutter",
             "request": "launch",
             "type": "dart",
@@ -12,13 +24,24 @@
             ]
         },
         {
+            "name": "WEB",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "debug",
+            "program": "lib/main.dart",
+            "args": [
+                "-d",
+                "chrome",
+                "--no-sound-null-safety"
+            ]
+        },
+        {
             "name": "Dart: Run all Tests",
             "request": "launch",
             "type": "dart",
             "program": "./test/",
             "args": [
-                "--no-sound-null-safety",
-                "-d chrome"
+                "--no-sound-null-safety"
             ]
         }
     ]
