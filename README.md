@@ -7,7 +7,9 @@ Este é uma pokedex desenvolvida em Flutter utilizando MOBX como gerencia de est
 A Versão do flutter que é utilizada neste projeto foi a 2.12.1, este projeto utiliza do Fluttter Version Management (FVM) para utiliza-lo é necessário ativa-lo **pub global activate fvm** troque o apontamento do PATH do flutter para **C:\Users\Usuario\fvm\default\bin**
 Agora dentro do projeto execute **fvm install** para instalar a verão.
 Agora será necessário configurar as preferencias do VS CODE aperte **F1**
+
 ![Preferencias do VS CODE](https://i.ibb.co/ZcpB8B1/Sem-t-tulo.png)
+
 Adicione o trecho abaixo a configuração
 
     {
@@ -16,8 +18,11 @@ Adicione o trecho abaixo a configuração
     }
 
 Agora basta pressionar **F1** e selecionar **Flutter: Change SDK**
+
 ![Change SDK](https://i.ibb.co/GnZn5ts/Screenshot-1.png)
+
 e escolher a versão setada no projeto
+
 ![setar versao](https://i.ibb.co/7NhxwvG/Screenshot-2.png)
 
 Pronto agora basta apretar **F5** e Debuggar
