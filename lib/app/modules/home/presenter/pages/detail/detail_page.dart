@@ -153,10 +153,6 @@ class _DetailPageState extends ModularState<DetailPage, DetailController> {
                             padding: EdgeInsets.symmetric(
                                 horizontal:
                                     MediaQuery.of(context).size.width * 0.09),
-                            child: Container(
-                              height: 100,
-                              color: Colors.amber,
-                            ),
                           ),
                         ],
                       ),

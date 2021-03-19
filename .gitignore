@@ -1,5 +1,6 @@
 # Slidy History Files
 .slidy/
+flutter_sdk
 
 # Miscellaneous
 *.class
