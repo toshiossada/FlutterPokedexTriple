@@ -7,7 +7,7 @@ import 'package:triple_pokedex/app/modules/home/domain/repositories/pokemon_repo
 import 'package:triple_pokedex/app/modules/home/infra/data/datasources/pokemon_datasource_interface.dart';
 import 'package:triple_pokedex/app/shared/helpers/errors.dart';
 
-// part 'pokemon_repository.g.dart';
+part 'pokemon_repository.g.dart';
 
 @Injectable()
 class PokemonRepository implements IPokemonRepository {

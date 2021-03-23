@@ -3,7 +3,7 @@ import 'package:dio/native_imp.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'interceptors/custom_interceptor.dart';
 
-// part 'custom_dio.g.dart';
+part 'custom_dio.g.dart';
 
 @Injectable()
 class CustomDio extends DioForNative {

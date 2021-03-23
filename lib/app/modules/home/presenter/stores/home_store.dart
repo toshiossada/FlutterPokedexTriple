@@ -5,7 +5,7 @@ import 'package:triple_pokedex/app/modules/home/domain/errors/errors.dart';
 import 'package:triple_pokedex/app/modules/home/presenter/pages/viewmodel/pokemon_vm.dart';
 import 'package:triple_pokedex/app/shared/helpers/errors.dart';
 
-// part 'home_store.g.dart';
+part 'home_store.g.dart';
 
 @Injectable()
 class HomeStore extends MobXStore<Failure, PokemonVM> {

@@ -34,10 +34,12 @@ dependencies:
 
 dev_dependencies:
   mockito: ^5.0.0
-  # modular_codegen: ^3.0.0-nullsafety.1
-  # build_runner: ^1.10.1
+  modular_codegen: ^3.0.0
+  build_runner: ^1.12.2
   flutter_test:
     sdk: flutter
+dependency_overrides:
+  source_gen: ^1.0.0
 
 flutter:
   uses-material-design: true

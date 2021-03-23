@@ -8,7 +8,7 @@ import 'package:triple_pokedex/app/shared/helpers/errors.dart';
 
 import 'interfaces/get_all_pokemon_interface.dart';
 
-// part 'get_all_pokemon.g.dart';
+part 'get_all_pokemon.g.dart';
 
 @Injectable()
 class GetAllPokemon implements IGetAllPokemon {

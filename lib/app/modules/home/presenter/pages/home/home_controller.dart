@@ -2,7 +2,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:triple_pokedex/app/modules/home/domain/usecases/interfaces/get_all_pokemon_interface.dart';
 import 'package:triple_pokedex/app/modules/home/presenter/stores/home_store.dart';
 
-// part 'home_controller.g.dart';
+part 'home_controller.g.dart';
 
 @Injectable()
 class HomeController {

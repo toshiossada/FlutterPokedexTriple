@@ -3,7 +3,8 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:triple_pokedex/app/modules/home/infra/data/datasources/pokemon_datasource_interface.dart';
 import 'package:triple_pokedex/app/modules/home/infra/models/responses/pokemon_model.dart';
 import 'package:triple_pokedex/app/shared/helpers/errors.dart';
-// part 'pokemon_datasource.g.dart';
+
+part 'pokemon_datasource.g.dart';
 
 @Injectable()
 class PokemonDatasource implements IPokemonDatasource {

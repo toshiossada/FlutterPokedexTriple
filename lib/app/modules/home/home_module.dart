@@ -15,14 +15,14 @@ class HomeModule extends Module {
   // Provide a list of dependencies to inject into your project
   @override
   final List<Bind> binds = [
-    Bind.lazySingleton((i) => DetailController(i.args!.data, i())),
-    Bind.lazySingleton((i) => HomeController(i(), i())),
-    Bind.lazySingleton((i) => HomeStore()),
-    Bind.lazySingleton((i) => PokemonDatasource(i())),
-    Bind.lazySingleton((i) => PokemonRepository(i())),
-    Bind.lazySingleton((i) => PokemonRepository(i())),
-    Bind.lazySingleton((i) => GetAllPokemon(i())),
-    Bind.lazySingleton((i) => CustomDio(i())),
+    $DetailController,
+    $HomeController,
+    $HomeStore,
+    $PokemonDatasource,
+    $PokemonRepository,
+    $PokemonRepository,
+    $GetAllPokemon,
+    $CustomDio,
     Bind.lazySingleton((i) => BaseOptions(
           baseUrl: config.baseUrlLogin,
           connectTimeout: 5000,

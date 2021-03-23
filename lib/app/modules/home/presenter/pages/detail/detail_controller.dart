@@ -5,7 +5,7 @@ import 'package:triple_pokedex/app/modules/home/presenter/pages/viewmodel/pokemo
 import 'package:triple_pokedex/app/modules/home/presenter/stores/home_store.dart';
 import 'package:triple_pokedex/app/shared/helpers/errors.dart';
 
-// part 'detail_controller.g.dart';
+part 'detail_controller.g.dart';
 
 @Injectable()
 class DetailController extends MobXStore<Failure, PokemonDetailVM> {
