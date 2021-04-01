@@ -14,7 +14,8 @@ class PokemonEntityDomain {
       'https://pokeres.bastionbot.org/images/pokemon/$id.png';
 
   PokemonType get pokemonMainType =>
-      Consts.pokemonType.firstWhere((w) => w.description == mainType);
+      Consts.pokemonType.firstWhere((w) => w.description == mainType,
+          orElse: () => PokemonType());
 
   const PokemonEntityDomain({
     this.id = 0,

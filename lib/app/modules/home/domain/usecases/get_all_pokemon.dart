@@ -20,10 +20,11 @@ class GetAllPokemon implements IGetAllPokemon {
     var list = <Future<Either<Failure, PokemonEntityDomain>>>[];
 
     var pokemons = <Either<Failure, PokemonEntityDomain>>[];
-    for (var i = 0; i < 151; i++) {
+    for (var i = 0; i < 47; i++) {
       list.add(_pokemonRepository.get(i + 1));
       if (i % 50 == 0) {
         pokemons.addAll(await Future.wait(list));
+        await Future.delayed(Duration(seconds: 1));
         list = <Future<Either<Failure, PokemonEntityDomain>>>[];
       }
     }

@@ -5,7 +5,8 @@ import 'package:triple_pokedex/app/modules/home/presenter/pages/viewmodel/pokemo
 import 'package:triple_pokedex/app/shared/helpers/consts.dart' as Consts;
 import 'package:triple_pokedex/app/shared/helpers/errors.dart';
 import 'package:triple_pokedex/app/shared/helpers/utils.dart';
-import 'detail_controller.dart';
+import '../controllers/detail_controller.dart';
+import '../stores/detail_store.dart';
 
 class DetailPage extends StatefulWidget {
   final String title;
@@ -20,21 +21,28 @@ class DetailPage extends StatefulWidget {
 
 class _DetailPageState extends ModularState<DetailPage, DetailController> {
   @override
+  void initState() {
+    store.init();
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return ScopedBuilder<DetailController, Failure, PokemonDetailVM>(
-        store: store,
+    return ScopedBuilder<DetailStore, Failure, PokemonDetailVM>(
+        store: store.detailStore,
         onLoading: (_) => Container(),
         onError: (_, error) => Utils.buildError('Erro'),
         onState: (_, state) {
           return Scaffold(
             appBar: AppBar(
               elevation: 0,
-              backgroundColor: store.state.pokemon.pokemonMainType.color,
+              backgroundColor:
+                  store.detailStore.state.pokemon.pokemonMainType.color,
             ),
             body: Stack(
               children: [
                 Container(
-                  color: store.state.pokemon.pokemonMainType.color,
+                  color: store.detailStore.state.pokemon.pokemonMainType.color,
                 ),
                 Padding(
                   padding: EdgeInsets.only(
@@ -56,13 +64,14 @@ class _DetailPageState extends ModularState<DetailPage, DetailController> {
                         children: [
                           SizedBox(height: 65),
                           Text(
-                            store.state.pokemon.name,
+                            store.detailStore.state.pokemon.name,
                             style: TextStyle(fontSize: 40),
                           ),
                           SizedBox(height: 25),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
-                            children: store.state.pokemon.types.map<Widget>(
+                            children: store.detailStore.state.pokemon.types
+                                .map<Widget>(
                               (e) {
                                 var type = Consts.pokemonType
                                     .firstWhere((w) => w.description == e);
@@ -98,7 +107,7 @@ class _DetailPageState extends ModularState<DetailPage, DetailController> {
                             ).toList(),
                           ),
                           SizedBox(height: 30),
-                          Text(store.state.pokemon.description),
+                          Text(store.detailStore.state.pokemon.description),
                           SizedBox(height: 52),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -108,8 +117,8 @@ class _DetailPageState extends ModularState<DetailPage, DetailController> {
                                 height: 45,
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(50),
-                                  color:
-                                      store.state.pokemon.pokemonMainType.color,
+                                  color: store.detailStore.state.pokemon
+                                      .pokemonMainType.color,
                                 ),
                                 child: Padding(
                                   padding: const EdgeInsets.symmetric(
@@ -139,7 +148,7 @@ class _DetailPageState extends ModularState<DetailPage, DetailController> {
                                     child: Text(
                                       'EVOLUÇÃO',
                                       style: TextStyle(
-                                          color: store.state.pokemon
+                                          color: store.detailStore.state.pokemon
                                               .pokemonMainType.color,
                                           fontSize: 14),
                                     ),
@@ -166,9 +175,7 @@ class _DetailPageState extends ModularState<DetailPage, DetailController> {
                   child: Container(
                     height: MediaQuery.of(context).size.height * 0.2,
                     child: PageView.builder(
-                      controller: PageController(
-                          initialPage: store.state.pokemon.id - 1,
-                          viewportFraction: 0.5),
+                      controller: store.pageController,
                       onPageChanged: store.setPage,
                       itemCount: store.store.state.pokemons.length,
                       itemBuilder: (_, index) {

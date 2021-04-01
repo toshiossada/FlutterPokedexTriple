@@ -7,7 +7,7 @@ import 'package:triple_pokedex/app/shared/components/rounded_text_field/rounded_
 import 'package:triple_pokedex/app/shared/helpers/consts.dart' as Consts;
 import 'package:triple_pokedex/app/shared/helpers/errors.dart';
 import 'package:triple_pokedex/app/shared/helpers/utils.dart';
-import 'home_controller.dart';
+import '../controllers/home_controller.dart';
 
 class HomePage extends StatefulWidget {
   final String title;
@@ -141,8 +141,7 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
                         ).toList(),
                       ),
                       onTap: () {
-                        Modular.to
-                            .pushNamed('pokemon/$number', arguments: pokemon);
+                        Modular.to.pushNamed('pokemon/$number');
                       },
                     );
                   },

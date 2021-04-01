@@ -8,7 +8,7 @@ class PokemonDetailVM {
     int? page,
   }) {
     this.pokemon = pokemon ?? PokemonEntityDomain();
-    this.page = page ?? 1;
+    this.page = page ?? 0;
   }
 
   PokemonDetailVM copyWith({

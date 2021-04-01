@@ -4,11 +4,12 @@ import 'package:triple_pokedex/app/shared/helpers/custom_dio/custom_dio.dart';
 import 'domain/usecases/get_all_pokemon.dart';
 import 'infra/data/repositories/pokemon_repository.dart';
 import 'infra/external/datasource/pokemon_datasource.dart';
-import 'presenter/pages/detail/detail_controller.dart';
-import 'presenter/pages/detail/detail_page.dart';
+import 'presenter/pages/detail/controllers/detail_controller.dart';
+import 'presenter/pages/detail/ui/detail_page.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'presenter/pages/home/home_controller.dart';
-import 'presenter/pages/home/home_page.dart';
+import 'presenter/pages/detail/stores/detail_store.dart';
+import 'presenter/pages/home/controllers/home_controller.dart';
+import 'presenter/pages/home/ui/home_page.dart';
 import 'presenter/stores/home_store.dart';
 
 class HomeModule extends Module {
@@ -23,6 +24,7 @@ class HomeModule extends Module {
     $PokemonRepository,
     $GetAllPokemon,
     $CustomDio,
+    $DetailStore,
     Bind.lazySingleton((i) => BaseOptions(
           baseUrl: config.baseUrlLogin,
           connectTimeout: 5000,

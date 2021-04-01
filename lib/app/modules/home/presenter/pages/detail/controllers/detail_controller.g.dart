@@ -7,7 +7,8 @@ part of 'detail_controller.dart';
 // **************************************************************************
 
 final $DetailController = BindInject(
-  (i) => DetailController(i.args!.data, i<HomeStore>()),
+  (i) => DetailController(
+      int.parse(i.args!.params['id']), i<HomeStore>(), i<DetailStore>()),
   isSingleton: true,
   isLazy: true,
 );

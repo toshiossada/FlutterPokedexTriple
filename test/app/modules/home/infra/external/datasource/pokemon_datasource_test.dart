@@ -23,9 +23,15 @@ void main() {
           Deve ler o JSON de Retorno
           E Retornar um pokemon
     ''', () async {
-      when(client.post(any)).thenAnswer((_) async =>
-          Response(data: jsonDecode(mock_response.pokemon1), statusCode: 200));
-      final result = datasource?.get(1);
+      int id = 1;
+      when(client.get(any)).thenAnswer(
+        (_) async => Response(
+          data: jsonDecode(mock_response.pokemon1),
+          statusCode: 200,
+          requestOptions: RequestOptions(path: '/'),
+        ),
+      );
+      final result = datasource!.get(id);
 
       expect(result, completes);
     });

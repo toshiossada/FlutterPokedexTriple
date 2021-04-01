@@ -13,7 +13,7 @@ class PokemonDatasource implements IPokemonDatasource {
   PokemonDatasource(this._client);
 
   @override
-  Future<PokemonModel> get(int id) async {
+  Future<PokemonModel> get(int? id) async {
     final response = await _client.get("/pokemon/$id");
 
     if (response.statusCode == 200) {
