@@ -33,7 +33,7 @@ dependencies:
 
 
 dev_dependencies:
-  mockito: ^5.0.3
+  mocktail: ^0.1.1
   modular_codegen: ^3.0.0
   build_runner: ^1.12.2
   flutter_test:

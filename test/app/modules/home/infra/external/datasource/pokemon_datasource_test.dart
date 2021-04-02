@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mockito/mockito.dart';
+import 'package:mocktail/mocktail.dart';
 import 'package:dio/dio.dart';
 import 'package:triple_pokedex/app/modules/home/infra/external/datasource/pokemon_datasource.dart';
 
@@ -24,16 +24,17 @@ void main() {
           E Retornar um pokemon
     ''', () async {
       int id = 1;
-      when(client.get(any)).thenAnswer(
-        (_) async => Response(
-          data: jsonDecode(mock_response.pokemon1),
-          statusCode: 200,
-          requestOptions: RequestOptions(path: '/'),
-        ),
-      );
+      var mockReturn = Future(() => Response(
+            data: jsonDecode(mock_response.pokemon1),
+            statusCode: 200,
+            requestOptions: RequestOptions(path: '/'),
+          ));
+
+      when(() => client.get(any())).thenAnswer((_) => mockReturn);
+
       final result = datasource!.get(id);
 
-      expect(result, completes);
+      expect(mockReturn, completes);
     });
   });
 }
