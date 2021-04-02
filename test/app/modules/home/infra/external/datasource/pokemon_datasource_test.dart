@@ -32,7 +32,7 @@ void main() {
 
       when(() => client.get(any())).thenAnswer((_) => mockReturn);
 
-      final result = datasource!.get(id);
+      final _ = datasource!.get(id);
 
       expect(mockReturn, completes);
     });
