@@ -4,10 +4,10 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:triple_pokedex/app/modules/home/presenter/pages/viewmodel/pokemon_vm.dart';
 import 'package:triple_pokedex/app/modules/home/presenter/stores/home_store.dart';
 import 'package:triple_pokedex/app/shared/components/rounded_text_field/rounded_text_field_widget.dart';
-import 'package:triple_pokedex/app/shared/helpers/consts.dart' as Consts;
 import 'package:triple_pokedex/app/shared/helpers/errors.dart';
 import 'package:triple_pokedex/app/shared/helpers/utils.dart';
 import '../controllers/home_controller.dart';
+import 'components/pokemon_card.dart';
 
 class HomePage extends StatefulWidget {
   final String title;
@@ -21,7 +21,7 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
   @override
   void initState() {
     super.initState();
-    store.getPokemons();
+    controller.getPokemons();
   }
 
   @override
@@ -64,7 +64,7 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
                       backgroundColor: Colors.black.withOpacity(0.2),
                       hintText: 'Encontre um Pokémon',
                       onChanged: (v) {
-                        store.store.setFilter(v!);
+                        controller.store.setFilter(v!);
                       },
                     ),
                   ),
@@ -74,7 +74,7 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
           ),
           Expanded(
             child: ScopedBuilder<HomeStore, Failure, PokemonVM>(
-              store: store.store,
+              store: controller.store,
               onLoading: (_) => Center(child: CircularProgressIndicator()),
               onError: (_, error) => Utils.buildError('Nada encontrado'),
               onState: (_, state) {
@@ -92,57 +92,9 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
                     var pokemon = state.pokemonFiltered[index];
                     var number = pokemon.id;
 
-                    return ListTile(
-                      leading: Hero(
-                        tag: 'pokemon$number',
-                        child: FadeInImage.assetNetwork(
-                          fadeInDuration: Duration(seconds: 2),
-                          fadeInCurve: Curves.bounceIn,
-                          placeholder: 'assets/loading.gif',
-                          image: pokemon.urlImage,
-                        ),
-                      ),
-                      title: Text(
-                        pokemon.name,
-                        style: TextStyle(
-                          fontSize: 19,
-                          color: const Color(0xFF4F4F4F),
-                        ),
-                      ),
-                      subtitle: Text(
-                        '#${number.toString().padLeft(3, '0')}',
-                        style: TextStyle(
-                          fontSize: 15,
-                          color: const Color(0xFFA4A4A4),
-                        ),
-                      ),
-                      trailing: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: pokemon.types.map(
-                          (e) {
-                            var type = Consts.pokemonType
-                                .firstWhere((w) => w.description == e);
-                            return Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 2),
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  color: type.color,
-                                  borderRadius: BorderRadius.circular(
-                                      MediaQuery.of(context).size.width * 0.07),
-                                ),
-                                width: MediaQuery.of(context).size.width * 0.07,
-                                height:
-                                    MediaQuery.of(context).size.width * 0.07,
-                                child: type.icon,
-                              ),
-                            );
-                          },
-                        ).toList(),
-                      ),
-                      onTap: () {
-                        Modular.to.pushNamed('pokemon/$number');
-                      },
+                    return PokemonCard(
+                      number: number,
+                      pokemon: pokemon,
                     );
                   },
                 );
